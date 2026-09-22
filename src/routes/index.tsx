@@ -80,6 +80,37 @@ const aboutMeta = [
   { label: "Exploring", value: "UI/UX · Modern Web Technologies" },
 ];
 
+function BrowserMockup({ url, type, big = false }: { url: string; type: string; big?: boolean }) {
+  return (
+    <div className="group/mock overflow-hidden rounded-lg border border-border bg-background transition-colors duration-300 group-hover:border-primary/50">
+      {/* browser chrome */}
+      <div className="flex items-center gap-2 border-b border-border bg-muted/40 px-3 py-2">
+        <span className="size-2 rounded-full bg-muted-foreground/40" aria-hidden="true" />
+        <span className="size-2 rounded-full bg-muted-foreground/40" aria-hidden="true" />
+        <span className="size-2 rounded-full bg-muted-foreground/40" aria-hidden="true" />
+        <div className="ml-2 flex-1 truncate rounded border border-border bg-background px-2 py-1 font-mono text-[10px] font-medium text-muted-foreground">
+          {url}
+        </div>
+      </div>
+      {/* abstract preview */}
+      <div className={`${big ? "aspect-[16/9]" : "aspect-[16/10]"} bg-muted/20`}>
+        <div className="flex h-full flex-col gap-3 p-4 sm:p-5">
+          <div className="flex items-center justify-between">
+            <div className="h-2.5 w-1/4 rounded bg-border/80" />
+            <span className="font-mono text-[10px] font-medium uppercase tracking-wider text-muted-foreground/70">{type}</span>
+          </div>
+          <div className="h-2 w-2/3 rounded bg-border/50" />
+          <div className="mt-1 grid flex-1 grid-cols-3 gap-3">
+            <div className="rounded bg-border/40" />
+            <div className="rounded bg-border/40" />
+            <div className="rounded bg-border/40" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [dark, setDark] = useState(false);
