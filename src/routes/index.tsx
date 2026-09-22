@@ -458,7 +458,7 @@ function Index() {
                   Things I’ve Built
                 </h2>
                 <p className="mt-4 max-w-xl text-base leading-7 text-muted-foreground">
-                  Selected projects across web development, mobile applications, full-stack systems, and real-world development work.
+                  Selected projects across mobile development, web development, AI-powered applications, and frontend design.
                 </p>
               </div>
             </div>
@@ -468,9 +468,6 @@ function Index() {
               const p = projects[0]!;
               return (
                 <div className="group mt-12 grid grid-cols-1 gap-8 border-t border-border pt-10 md:grid-cols-12 md:gap-10">
-                  <div className="md:col-span-7">
-                    <BrowserMockup url={p.url} type={p.type} big />
-                  </div>
                   <div className="md:col-span-5 md:pt-2">
                     <div className="flex items-baseline gap-3">
                       <span className="font-mono text-xs font-medium text-primary">{p.number}</span>
@@ -485,16 +482,20 @@ function Index() {
                     <p className="mt-5 font-mono text-xs font-medium uppercase tracking-wider text-foreground">
                       {p.tech}
                     </p>
-                    <div className="mt-6 flex flex-wrap items-center gap-5">
-                      <a href="#projects" className="group/link inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:text-primary/80">
+                    <div className="mt-6">
+                      <a
+                        href={p.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group/link inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:text-primary/80"
+                      >
                         View Project
                         <ArrowRight className="size-4 transition-transform duration-200 group-hover/link:translate-x-1" />
                       </a>
-                      <a href="#projects" className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground transition-colors hover:text-primary">
-                        View Code
-                        <ArrowRight className="size-4" />
-                      </a>
                     </div>
+                  </div>
+                  <div className="md:col-span-7">
+                    <ProjectMockup mockup={p.mockup} url={p.github} type={p.type} />
                   </div>
                 </div>
               );
@@ -504,7 +505,7 @@ function Index() {
             <div className="mt-12 grid grid-cols-1 gap-x-12 gap-y-10 md:grid-cols-2">
               {projects.slice(1).map((p) => (
                 <div key={p.number} className="group border-t border-border pt-6">
-                  <BrowserMockup url={p.url} type={p.type} />
+                  <ProjectMockup mockup={p.mockup} url={p.github} type={p.type} />
                   <div className="mt-5">
                     <div className="flex items-baseline gap-3">
                       <span className="font-mono text-xs font-medium text-primary">{p.number}</span>
@@ -516,20 +517,29 @@ function Index() {
                     <p className="mt-3 text-sm leading-6 text-muted-foreground">
                       {p.desc}
                     </p>
+                    {"features" in p && p.features ? (
+                      <ul className="mt-4 grid grid-cols-1 gap-1.5 sm:grid-cols-2">
+                        {p.features.map((f) => (
+                          <li key={f} className="flex items-center gap-2 text-xs leading-5 text-muted-foreground">
+                            <span className="size-1 shrink-0 rounded-full bg-primary" aria-hidden="true" />
+                            {f}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
                     <p className="mt-4 font-mono text-xs font-medium uppercase tracking-wider text-foreground">
                       {p.tech}
                     </p>
-                    <div className="mt-4 flex flex-wrap items-center gap-5">
-                      <a href="#projects" className="group/link inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:text-primary/80">
+                    <div className="mt-4">
+                      <a
+                        href={p.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group/link inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:text-primary/80"
+                      >
                         View Project
                         <ArrowRight className="size-4 transition-transform duration-200 group-hover/link:translate-x-1" />
                       </a>
-                      {p.hasCode && (
-                        <a href="#projects" className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground transition-colors hover:text-primary">
-                          View Code
-                          <ArrowRight className="size-4" />
-                        </a>
-                      )}
                     </div>
                   </div>
                 </div>
