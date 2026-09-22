@@ -21,17 +21,25 @@ export const Route = createFileRoute("/")({
 const navItems = ["Home", "About", "Skills", "Projects", "Experience", "Contact"];
 
 const sections = [
-  { id: "skills", number: "02", title: "Skills", note: "Core technologies and engineering capabilities will be organized here." },
   { id: "projects", number: "03", title: "Projects", note: "Selected full-stack work and case studies will be presented here." },
   { id: "experience", number: "04", title: "Experience", note: "Professional roles, contributions, and outcomes will be documented here." },
   { id: "education", number: "05", title: "Education", note: "Academic background and relevant learning will be added here." },
   { id: "services", number: "06", title: "Services", note: "Development services and areas of collaboration will be outlined here." },
 ];
 
+const skillsGroups = [
+  { number: "01", label: "Languages", items: ["C++", "JavaScript", "Dart", "HTML5", "CSS3"] },
+  { number: "02", label: "Frameworks", items: ["React", "Next.js", "Flutter", "Django"] },
+  { number: "03", label: "Databases", items: ["MySQL", "PostgreSQL", "Firebase"] },
+  { number: "04", label: "Tools & Development", items: ["VS Code", "Postman", "Git"] },
+  { number: "05", label: "Systems & Networking", items: ["Linux", "Computer Networking"] },
+  { number: "06", label: "Core", items: ["Data Structures & Algorithms"] },
+];
+
 const aboutMeta = [
   { label: "Currently", value: "Information Engineering Technology — University of the Lahore" },
   { label: "Focus", value: "Full-Stack Development · Web Development · Mobile Development" },
-  { label: "Exploring", value: "UI/UX · Modern Web Technologies · Cybersecurity" },
+  { label: "Exploring", value: "UI/UX · Modern Web Technologies" },
 ];
 
 function Index() {
@@ -198,8 +206,66 @@ function Index() {
           </div>
         </section>
 
+        {/* Skills */}
+        <section id="skills" className="technical-grid border-b border-border">
+          <div className="mx-auto max-w-[1200px] px-5 py-16 sm:px-8 md:py-20 lg:px-10 lg:py-24">
+            {/* Header */}
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-12">
+              <div className="md:col-span-3">
+                <p className="font-mono text-xs font-medium text-primary">/02</p>
+              </div>
+              <div className="md:col-span-9">
+                <p className="font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+                  Skills
+                </p>
+                <h2 className="mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+                  Technologies I Build With
+                </h2>
+                <p className="mt-4 max-w-xl text-base leading-7 text-muted-foreground">
+                  A practical development stack covering frontend, backend, mobile, databases, and development tools.
+                </p>
+              </div>
+            </div>
+
+            {/* Groups */}
+            <div className="mt-12 grid grid-cols-1 gap-x-12 gap-y-8 md:grid-cols-2">
+              {skillsGroups.map((group) => (
+                <div key={group.label} className="border-t border-border pt-5">
+                  <div className="flex items-baseline gap-3">
+                    <span className="font-mono text-[11px] font-medium text-primary">{group.number}</span>
+                    <h3 className="font-mono text-xs font-medium uppercase tracking-[0.16em] text-foreground">
+                      {group.label}
+                    </h3>
+                  </div>
+                  <ul className="mt-4 flex flex-wrap gap-2">
+                    {group.items.map((item) => (
+                      <li
+                        key={item}
+                        className="rounded-md border border-border bg-background px-3 py-1.5 text-sm font-medium text-foreground transition-colors hover:border-primary hover:text-primary"
+                      >
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+
+            {/* Current stack footer */}
+            <div className="mt-12 flex flex-col gap-2 border-t border-border pt-5 sm:flex-row sm:items-center sm:gap-4">
+              <span className="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-primary">
+                Current Stack
+              </span>
+              <span className="hidden h-4 w-px bg-border sm:block" aria-hidden="true" />
+              <span className="font-mono text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                React · Flutter · Django · PostgreSQL · Firebase
+              </span>
+            </div>
+          </div>
+        </section>
+
         {sections.map((section, index) => (
-          <section key={section.id} id={section.id} className={`${index === 1 || index === 4 ? "technical-grid " : ""}border-b border-border`}>
+          <section key={section.id} id={section.id} className={`${index === 0 || index === 3 ? "technical-grid " : ""}border-b border-border`}>
             <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-8 px-5 py-16 sm:px-8 md:grid-cols-12 md:py-20 lg:px-10">
               <div className="md:col-span-3">
                 <p className="font-mono text-xs font-medium text-primary">/{section.number}</p>
