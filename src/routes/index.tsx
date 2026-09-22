@@ -21,11 +21,19 @@ export const Route = createFileRoute("/")({
 const navItems = ["Home", "About", "Skills", "Projects", "Experience", "Contact"];
 
 const sections = [
-  { id: "skills", number: "02", title: "Skills", note: "Core technologies and engineering capabilities will be organized here." },
   { id: "projects", number: "03", title: "Projects", note: "Selected full-stack work and case studies will be presented here." },
   { id: "experience", number: "04", title: "Experience", note: "Professional roles, contributions, and outcomes will be documented here." },
   { id: "education", number: "05", title: "Education", note: "Academic background and relevant learning will be added here." },
   { id: "services", number: "06", title: "Services", note: "Development services and areas of collaboration will be outlined here." },
+];
+
+const skillsGroups = [
+  { number: "01", label: "Languages", items: ["C++", "JavaScript", "Dart", "HTML5", "CSS3"] },
+  { number: "02", label: "Frameworks", items: ["React", "Next.js", "Flutter", "Django"] },
+  { number: "03", label: "Databases", items: ["MySQL", "PostgreSQL", "Firebase"] },
+  { number: "04", label: "Tools & Development", items: ["VS Code", "Postman", "Git"] },
+  { number: "05", label: "Systems & Networking", items: ["Linux", "Computer Networking"] },
+  { number: "06", label: "Core", items: ["Data Structures & Algorithms"] },
 ];
 
 const aboutMeta = [
