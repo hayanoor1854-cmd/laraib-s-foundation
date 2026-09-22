@@ -31,7 +31,7 @@ const sections = [
 const aboutMeta = [
   { label: "Currently", value: "Information Engineering Technology — University of the Lahore" },
   { label: "Focus", value: "Full-Stack Development · Web Development · Mobile Development" },
-  { label: "Exploring", value: "UI/UX · Modern Web Technologies · Cybersecurity" },
+  { label: "Exploring", value: "UI/UX · Modern Web Technologies" },
 ];
 
 function Index() {
