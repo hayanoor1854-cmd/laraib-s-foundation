@@ -21,10 +21,48 @@ export const Route = createFileRoute("/")({
 const navItems = ["Home", "About", "Skills", "Projects", "Experience", "Contact"];
 
 const sections = [
-  { id: "projects", number: "03", title: "Projects", note: "Selected full-stack work and case studies will be presented here." },
   { id: "experience", number: "04", title: "Experience", note: "Professional roles, contributions, and outcomes will be documented here." },
   { id: "education", number: "05", title: "Education", note: "Academic background and relevant learning will be added here." },
   { id: "services", number: "06", title: "Services", note: "Development services and areas of collaboration will be outlined here." },
+];
+
+const projects = [
+  {
+    number: "01",
+    title: "Admin-Student Management System",
+    type: "Web Application",
+    url: "admin-student.app",
+    desc: "A role-based educational management platform with separate admin and student experiences, authentication, course management, mood tracking, daily tasks, and profile settings.",
+    tech: "Firebase · Authentication APIs · Real-time Database",
+    hasCode: true,
+  },
+  {
+    number: "02",
+    title: "iPhone Website Replica",
+    type: "Frontend",
+    url: "iphone-replica.app",
+    desc: "A responsive recreation of the iPhone website focused on accurate layouts, interactive elements, product categories, and modern frontend interactions.",
+    tech: "React · CSS3 · JavaScript",
+    hasCode: true,
+  },
+  {
+    number: "03",
+    title: "UOL University Website",
+    type: "Website",
+    url: "uol.edu.pk",
+    desc: "A university website concept featuring course registration, login functionality, department information, degree programs, and achievement showcases.",
+    tech: "HTML5 · CSS3 · JavaScript",
+    hasCode: false,
+  },
+  {
+    number: "04",
+    title: "IDAP — Government Application",
+    type: "Mobile Application",
+    url: "idap.gov.app",
+    desc: "A project management application developed during my UET internship, featuring administrative dashboards and threshold-based alerts.",
+    tech: "Flutter · Django · PostgreSQL",
+    hasCode: false,
+  },
 ];
 
 const skillsGroups = [
@@ -41,6 +79,37 @@ const aboutMeta = [
   { label: "Focus", value: "Full-Stack Development · Web Development · Mobile Development" },
   { label: "Exploring", value: "UI/UX · Modern Web Technologies" },
 ];
+
+function BrowserMockup({ url, type, big = false }: { url: string; type: string; big?: boolean }) {
+  return (
+    <div className="group/mock overflow-hidden rounded-lg border border-border bg-background transition-colors duration-300 group-hover:border-primary/50">
+      {/* browser chrome */}
+      <div className="flex items-center gap-2 border-b border-border bg-muted/40 px-3 py-2">
+        <span className="size-2 rounded-full bg-muted-foreground/40" aria-hidden="true" />
+        <span className="size-2 rounded-full bg-muted-foreground/40" aria-hidden="true" />
+        <span className="size-2 rounded-full bg-muted-foreground/40" aria-hidden="true" />
+        <div className="ml-2 flex-1 truncate rounded border border-border bg-background px-2 py-1 font-mono text-[10px] font-medium text-muted-foreground">
+          {url}
+        </div>
+      </div>
+      {/* abstract preview */}
+      <div className={`${big ? "aspect-[16/9]" : "aspect-[16/10]"} bg-muted/20`}>
+        <div className="flex h-full flex-col gap-3 p-4 sm:p-5">
+          <div className="flex items-center justify-between">
+            <div className="h-2.5 w-1/4 rounded bg-border/80" />
+            <span className="font-mono text-[10px] font-medium uppercase tracking-wider text-muted-foreground/70">{type}</span>
+          </div>
+          <div className="h-2 w-2/3 rounded bg-border/50" />
+          <div className="mt-1 grid flex-1 grid-cols-3 gap-3">
+            <div className="rounded bg-border/40" />
+            <div className="rounded bg-border/40" />
+            <div className="rounded bg-border/40" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -264,8 +333,109 @@ function Index() {
           </div>
         </section>
 
+        {/* Projects */}
+        <section id="projects" className="border-b border-border">
+          <div className="mx-auto max-w-[1200px] px-5 py-16 sm:px-8 md:py-20 lg:px-10 lg:py-24">
+            {/* Header */}
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-12">
+              <div className="md:col-span-3">
+                <p className="font-mono text-xs font-medium text-primary">/03</p>
+              </div>
+              <div className="md:col-span-9">
+                <p className="font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+                  Selected Projects
+                </p>
+                <h2 className="mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+                  Things I’ve Built
+                </h2>
+                <p className="mt-4 max-w-xl text-base leading-7 text-muted-foreground">
+                  Selected projects across web development, mobile applications, full-stack systems, and real-world development work.
+                </p>
+              </div>
+            </div>
+
+            {/* Featured project */}
+            {(() => {
+              const p = projects[0]!;
+              return (
+                <div className="group mt-12 grid grid-cols-1 gap-8 border-t border-border pt-10 md:grid-cols-12 md:gap-10">
+                  <div className="md:col-span-7">
+                    <BrowserMockup url={p.url} type={p.type} big />
+                  </div>
+                  <div className="md:col-span-5 md:pt-2">
+                    <div className="flex items-baseline gap-3">
+                      <span className="font-mono text-xs font-medium text-primary">{p.number}</span>
+                      <span className="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground">{p.type}</span>
+                    </div>
+                    <h3 className="mt-3 text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+                      {p.title}
+                    </h3>
+                    <p className="mt-4 text-base leading-7 text-muted-foreground">
+                      {p.desc}
+                    </p>
+                    <p className="mt-5 font-mono text-xs font-medium uppercase tracking-wider text-foreground">
+                      {p.tech}
+                    </p>
+                    <div className="mt-6 flex flex-wrap items-center gap-5">
+                      <a href="#projects" className="group/link inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:text-primary/80">
+                        View Project
+                        <ArrowRight className="size-4 transition-transform duration-200 group-hover/link:translate-x-1" />
+                      </a>
+                      <a href="#projects" className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground transition-colors hover:text-primary">
+                        View Code
+                        <ArrowRight className="size-4" />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              );
+            })()}
+
+            {/* Other projects */}
+            <div className="mt-12 grid grid-cols-1 gap-x-12 gap-y-10 md:grid-cols-2">
+              {projects.slice(1).map((p) => (
+                <div key={p.number} className="group border-t border-border pt-6">
+                  <BrowserMockup url={p.url} type={p.type} />
+                  <div className="mt-5">
+                    <div className="flex items-baseline gap-3">
+                      <span className="font-mono text-xs font-medium text-primary">{p.number}</span>
+                      <span className="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground">{p.type}</span>
+                    </div>
+                    <h3 className="mt-2 text-xl font-bold tracking-tight text-foreground">
+                      {p.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                      {p.desc}
+                    </p>
+                    <p className="mt-4 font-mono text-xs font-medium uppercase tracking-wider text-foreground">
+                      {p.tech}
+                    </p>
+                    <div className="mt-4 flex flex-wrap items-center gap-5">
+                      <a href="#projects" className="group/link inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:text-primary/80">
+                        View Project
+                        <ArrowRight className="size-4 transition-transform duration-200 group-hover/link:translate-x-1" />
+                      </a>
+                      {p.hasCode && (
+                        <a href="#projects" className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground transition-colors hover:text-primary">
+                          View Code
+                          <ArrowRight className="size-4" />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Footer note */}
+            <p className="mt-12 border-t border-border pt-6 font-mono text-xs font-medium uppercase tracking-wider text-muted-foreground">
+              More projects and experiments coming soon.
+            </p>
+          </div>
+        </section>
+
         {sections.map((section, index) => (
-          <section key={section.id} id={section.id} className={`${index === 0 || index === 3 ? "technical-grid " : ""}border-b border-border`}>
+          <section key={section.id} id={section.id} className={`${index === 2 ? "technical-grid " : ""}border-b border-border`}>
             <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-8 px-5 py-16 sm:px-8 md:grid-cols-12 md:py-20 lg:px-10">
               <div className="md:col-span-3">
                 <p className="font-mono text-xs font-medium text-primary">/{section.number}</p>
