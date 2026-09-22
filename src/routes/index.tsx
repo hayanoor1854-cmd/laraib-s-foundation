@@ -21,12 +21,17 @@ export const Route = createFileRoute("/")({
 const navItems = ["Home", "About", "Skills", "Projects", "Experience", "Contact"];
 
 const sections = [
-  { id: "about", number: "01", title: "About", note: "A concise introduction and professional perspective will live here." },
   { id: "skills", number: "02", title: "Skills", note: "Core technologies and engineering capabilities will be organized here." },
   { id: "projects", number: "03", title: "Projects", note: "Selected full-stack work and case studies will be presented here." },
   { id: "experience", number: "04", title: "Experience", note: "Professional roles, contributions, and outcomes will be documented here." },
   { id: "education", number: "05", title: "Education", note: "Academic background and relevant learning will be added here." },
   { id: "services", number: "06", title: "Services", note: "Development services and areas of collaboration will be outlined here." },
+];
+
+const aboutMeta = [
+  { label: "Currently", value: "Information Engineering Technology — University of the Lahore" },
+  { label: "Focus", value: "Full-Stack Development · Web Development · Mobile Development" },
+  { label: "Exploring", value: "UI/UX · Modern Web Technologies · Cybersecurity" },
 ];
 
 function Index() {
@@ -151,8 +156,50 @@ function Index() {
           </div>
         </section>
 
+        {/* About */}
+        <section id="about" className="technical-grid border-b border-border">
+          <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-10 px-5 py-16 sm:px-8 md:grid-cols-12 md:gap-12 md:py-20 lg:px-10 lg:py-24">
+            {/* Left: label + heading */}
+            <div className="hero-fade md:col-span-5">
+              <p className="font-mono text-xs font-medium text-primary">/01</p>
+              <p className="mt-4 font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+                About <span className="text-muted-foreground/50" aria-hidden="true">/</span> Profile
+              </p>
+              <h2 className="mt-5 text-3xl font-bold leading-[1.08] tracking-tight text-foreground sm:text-4xl md:text-[2.75rem]">
+                Building with code, curiosity, and purpose.
+              </h2>
+            </div>
+
+            {/* Right: intro + supporting + meta */}
+            <div className="hero-fade md:col-span-7 md:pt-1" style={{ animationDelay: "0.08s" }}>
+              <p className="text-lg leading-7 text-foreground">
+                I’m Laraib Amjad, a Full-Stack & Mobile Developer focused on building modern web applications, mobile experiences, and practical digital solutions.
+              </p>
+              <p className="mt-5 text-base leading-7 text-muted-foreground">
+                Currently pursuing Information Engineering Technology at University of the Lahore, I enjoy turning ideas into functional and user-focused products. My development journey spans frontend interfaces, backend systems, databases, authentication, and mobile application development.
+              </p>
+              <p className="mt-4 text-base leading-7 text-muted-foreground">
+                I’m particularly interested in full-stack development, UI/UX, emerging technologies, and continuously improving how digital products are designed and built.
+              </p>
+
+              {/* Technical info area */}
+              <dl className="mt-9 divide-y divide-border border-t border-border">
+                {aboutMeta.map((item) => (
+                  <div key={item.label} className="grid grid-cols-1 gap-1 py-4 sm:grid-cols-[8rem_1fr] sm:gap-6">
+                    <dt className="flex items-center gap-2 font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-primary">
+                      <span className="size-1 rounded-full bg-primary" aria-hidden="true" />
+                      {item.label}
+                    </dt>
+                    <dd className="text-sm leading-6 text-foreground">{item.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          </div>
+        </section>
+
         {sections.map((section, index) => (
-          <section key={section.id} id={section.id} className={`${index === 2 || index === 5 ? "technical-grid " : ""}border-b border-border`}>
+          <section key={section.id} id={section.id} className={`${index === 1 || index === 4 ? "technical-grid " : ""}border-b border-border`}>
             <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-8 px-5 py-16 sm:px-8 md:grid-cols-12 md:py-20 lg:px-10">
               <div className="md:col-span-3">
                 <p className="font-mono text-xs font-medium text-primary">/{section.number}</p>
