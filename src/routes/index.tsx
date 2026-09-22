@@ -356,7 +356,7 @@ function Index() {
 
             {/* Featured project */}
             {(() => {
-              const p = projects[0];
+              const p = projects[0]!;
               return (
                 <div className="group mt-12 grid grid-cols-1 gap-8 border-t border-border pt-10 md:grid-cols-12 md:gap-10">
                   <div className="md:col-span-7">
