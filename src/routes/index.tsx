@@ -30,38 +30,57 @@ const projects = [
   {
     number: "01",
     title: "Admin-Student Management System",
-    type: "Web Application",
-    url: "admin-student.app",
-    desc: "A role-based educational management platform with separate admin and student experiences, authentication, course management, mood tracking, daily tasks, and profile settings.",
-    tech: "Firebase · Authentication APIs · Real-time Database",
-    hasCode: true,
+    type: "Mobile Application",
+    desc: "A role-based educational management mobile application with separate admin and student experiences, authentication, course management, mood tracking, daily tasks, and profile settings.",
+    tech: "Flutter · Firebase · Authentication APIs · Real-time Database",
+    github: "https://github.com/itx-LaraibAmjad/studentportalapp",
+    mockup: "mobile" as const,
   },
   {
     number: "02",
     title: "iPhone Website Replica",
-    type: "Frontend",
-    url: "iphone-replica.app",
-    desc: "A responsive recreation of the iPhone website focused on accurate layouts, interactive elements, product categories, and modern frontend interactions.",
+    type: "Web Development",
+    desc: "A responsive recreation of Apple's iPhone website focused on accurate layouts, product presentation, interactive elements, and modern frontend interactions.",
     tech: "React · CSS3 · JavaScript",
-    hasCode: true,
+    github: "https://github.com/itx-LaraibAmjad/iphonewebproject",
+    mockup: "browser" as const,
   },
   {
     number: "03",
-    title: "UOL University Website",
-    type: "Website",
-    url: "uol.edu.pk",
-    desc: "A university website concept featuring course registration, login functionality, department information, degree programs, and achievement showcases.",
-    tech: "HTML5 · CSS3 · JavaScript",
-    hasCode: false,
+    title: "Smart Knowledge Base",
+    type: "AI-Powered Full-Stack Application",
+    desc: "An AI-powered knowledge management application where users can upload text snippets, automatically classify them into Technical, Urgent, or General categories, and manage their content through search, filtering, editing, and deletion.",
+    features: [
+      "AI-powered automatic tagging",
+      "Technical, Urgent, and General categories",
+      "Smart full-text search",
+      "Real-time filtering",
+      "Edit and automatic re-tagging",
+      "Delete with confirmation",
+      "Input validation",
+      "Responsive interface",
+    ],
+    tech: "React · Django · Django REST Framework · Python · HuggingFace · PostgreSQL/SQLite",
+    github: "https://github.com/itx-LaraibAmjad/smart-knowledge-base",
+    mockup: "dashboard" as const,
   },
   {
     number: "04",
-    title: "IDAP — Government Application",
-    type: "Mobile Application",
-    url: "idap.gov.app",
-    desc: "A project management application developed during my UET internship, featuring administrative dashboards and threshold-based alerts.",
-    tech: "Flutter · Django · PostgreSQL",
-    hasCode: false,
+    title: "UOL University Website",
+    type: "Web Development",
+    desc: "A university website featuring course registration, login functionality, department information, degree programs, and achievement showcases.",
+    tech: "HTML5 · CSS3 · JavaScript",
+    github: "https://github.com/itx-LaraibAmjad/uolwebsite",
+    mockup: "browser" as const,
+  },
+  {
+    number: "05",
+    title: "Winter Fashion Website",
+    type: "Frontend / UI Design",
+    desc: "A winter fashion website designed around winter clothing and seasonal product presentation. This project was created to practice frontend layout, visual design, typography, spacing, and responsive styling using HTML and CSS.",
+    tech: "HTML5 · CSS3",
+    github: "https://github.com/itx-LaraibAmjad/winterfashion",
+    mockup: "browser" as const,
   },
 ];
 
@@ -80,7 +99,7 @@ const aboutMeta = [
   { label: "Exploring", value: "UI/UX · Modern Web Technologies" },
 ];
 
-function BrowserMockup({ url, type, big = false }: { url: string; type: string; big?: boolean }) {
+function BrowserMockup({ url, type }: { url: string; type: string }) {
   return (
     <div className="group/mock overflow-hidden rounded-lg border border-border bg-background transition-colors duration-300 group-hover:border-primary/50">
       {/* browser chrome */}
@@ -93,7 +112,7 @@ function BrowserMockup({ url, type, big = false }: { url: string; type: string; 
         </div>
       </div>
       {/* abstract preview */}
-      <div className={`${big ? "aspect-[16/9]" : "aspect-[16/10]"} bg-muted/20`}>
+      <div className="aspect-[16/10] bg-muted/20">
         <div className="flex h-full flex-col gap-3 p-4 sm:p-5">
           <div className="flex items-center justify-between">
             <div className="h-2.5 w-1/4 rounded bg-border/80" />
@@ -109,6 +128,96 @@ function BrowserMockup({ url, type, big = false }: { url: string; type: string; 
       </div>
     </div>
   );
+}
+
+function MobileMockup({ type }: { type: string }) {
+  return (
+    <div className="group/mock flex justify-center transition-colors duration-300 group-hover:[&_.phone-frame]:border-primary/50">
+      <div className="phone-frame w-full max-w-[300px] rounded-[2rem] border border-border bg-background p-3 transition-colors duration-300">
+        <div className="relative overflow-hidden rounded-[1.5rem] border border-border bg-muted/20">
+          {/* notch */}
+          <div className="mx-auto mt-2 h-1.5 w-16 rounded-full bg-border" aria-hidden="true" />
+          {/* app wireframe */}
+          <div className="flex aspect-[9/19] flex-col gap-3 p-4">
+            <div className="flex items-center justify-between">
+              <div className="h-2.5 w-2/5 rounded bg-border/80" />
+              <div className="size-5 rounded-full bg-border/70" aria-hidden="true" />
+            </div>
+            <span className="font-mono text-[9px] font-medium uppercase tracking-wider text-muted-foreground/70">{type}</span>
+            <div className="h-2 w-3/4 rounded bg-border/50" />
+            <div className="mt-1 flex-1 space-y-2.5">
+              <div className="h-12 rounded-lg bg-border/40" />
+              <div className="h-12 rounded-lg bg-border/35" />
+              <div className="h-12 rounded-lg bg-border/30" />
+            </div>
+            <div className="flex items-center justify-around rounded-lg border border-border bg-background/60 px-2 py-2">
+              <div className="size-4 rounded bg-border/70" aria-hidden="true" />
+              <div className="size-4 rounded bg-primary/50" aria-hidden="true" />
+              <div className="size-4 rounded bg-border/70" aria-hidden="true" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function DashboardMockup({ url, type }: { url: string; type: string }) {
+  return (
+    <div className="group/mock overflow-hidden rounded-lg border border-border bg-background transition-colors duration-300 group-hover:border-primary/50">
+      {/* browser chrome */}
+      <div className="flex items-center gap-2 border-b border-border bg-muted/40 px-3 py-2">
+        <span className="size-2 rounded-full bg-muted-foreground/40" aria-hidden="true" />
+        <span className="size-2 rounded-full bg-muted-foreground/40" aria-hidden="true" />
+        <span className="size-2 rounded-full bg-muted-foreground/40" aria-hidden="true" />
+        <div className="ml-2 flex-1 truncate rounded border border-border bg-background px-2 py-1 font-mono text-[10px] font-medium text-muted-foreground">
+          {url}
+        </div>
+      </div>
+      {/* dashboard preview */}
+      <div className="aspect-[16/10] bg-muted/20">
+        <div className="flex h-full">
+          {/* sidebar */}
+          <div className="hidden w-1/5 flex-col gap-2.5 border-r border-border bg-background/40 p-3 sm:flex">
+            <div className="h-2.5 w-3/4 rounded bg-border/80" />
+            <div className="mt-2 space-y-2">
+              <div className="h-2 w-full rounded bg-primary/40" />
+              <div className="h-2 w-full rounded bg-border/50" />
+              <div className="h-2 w-full rounded bg-border/50" />
+              <div className="h-2 w-full rounded bg-border/50" />
+            </div>
+          </div>
+          {/* main */}
+          <div className="flex flex-1 flex-col gap-3 p-4 sm:p-5">
+            <div className="flex items-center justify-between">
+              <div className="h-2.5 w-1/3 rounded bg-border/80" />
+              <span className="font-mono text-[10px] font-medium uppercase tracking-wider text-muted-foreground/70">{type}</span>
+            </div>
+            <div className="grid flex-1 grid-cols-2 gap-3 sm:grid-cols-3">
+              <div className="rounded bg-border/40 p-3">
+                <div className="h-2 w-1/2 rounded bg-border/70" />
+                <div className="mt-3 h-3 w-3/4 rounded bg-primary/30" />
+              </div>
+              <div className="rounded bg-border/35 p-3">
+                <div className="h-2 w-1/2 rounded bg-border/70" />
+                <div className="mt-3 h-3 w-2/3 rounded bg-border/50" />
+              </div>
+              <div className="hidden rounded bg-border/30 p-3 sm:block">
+                <div className="h-2 w-1/2 rounded bg-border/70" />
+                <div className="mt-3 h-3 w-3/4 rounded bg-border/45" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ProjectMockup({ mockup, url, type }: { mockup: "browser" | "mobile" | "dashboard"; url: string; type: string }) {
+  if (mockup === "mobile") return <MobileMockup type={type} />;
+  if (mockup === "dashboard") return <DashboardMockup url={url} type={type} />;
+  return <BrowserMockup url={url} type={type} />;
 }
 
 function Index() {
@@ -349,7 +458,7 @@ function Index() {
                   Things I’ve Built
                 </h2>
                 <p className="mt-4 max-w-xl text-base leading-7 text-muted-foreground">
-                  Selected projects across web development, mobile applications, full-stack systems, and real-world development work.
+                  Selected projects across mobile development, web development, AI-powered applications, and frontend design.
                 </p>
               </div>
             </div>
@@ -359,9 +468,6 @@ function Index() {
               const p = projects[0]!;
               return (
                 <div className="group mt-12 grid grid-cols-1 gap-8 border-t border-border pt-10 md:grid-cols-12 md:gap-10">
-                  <div className="md:col-span-7">
-                    <BrowserMockup url={p.url} type={p.type} big />
-                  </div>
                   <div className="md:col-span-5 md:pt-2">
                     <div className="flex items-baseline gap-3">
                       <span className="font-mono text-xs font-medium text-primary">{p.number}</span>
@@ -376,16 +482,20 @@ function Index() {
                     <p className="mt-5 font-mono text-xs font-medium uppercase tracking-wider text-foreground">
                       {p.tech}
                     </p>
-                    <div className="mt-6 flex flex-wrap items-center gap-5">
-                      <a href="#projects" className="group/link inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:text-primary/80">
+                    <div className="mt-6">
+                      <a
+                        href={p.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group/link inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:text-primary/80"
+                      >
                         View Project
                         <ArrowRight className="size-4 transition-transform duration-200 group-hover/link:translate-x-1" />
                       </a>
-                      <a href="#projects" className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground transition-colors hover:text-primary">
-                        View Code
-                        <ArrowRight className="size-4" />
-                      </a>
                     </div>
+                  </div>
+                  <div className="md:col-span-7">
+                    <ProjectMockup mockup={p.mockup} url={p.github} type={p.type} />
                   </div>
                 </div>
               );
@@ -395,7 +505,7 @@ function Index() {
             <div className="mt-12 grid grid-cols-1 gap-x-12 gap-y-10 md:grid-cols-2">
               {projects.slice(1).map((p) => (
                 <div key={p.number} className="group border-t border-border pt-6">
-                  <BrowserMockup url={p.url} type={p.type} />
+                  <ProjectMockup mockup={p.mockup} url={p.github} type={p.type} />
                   <div className="mt-5">
                     <div className="flex items-baseline gap-3">
                       <span className="font-mono text-xs font-medium text-primary">{p.number}</span>
@@ -407,20 +517,29 @@ function Index() {
                     <p className="mt-3 text-sm leading-6 text-muted-foreground">
                       {p.desc}
                     </p>
+                    {"features" in p && p.features ? (
+                      <ul className="mt-4 grid grid-cols-1 gap-1.5 sm:grid-cols-2">
+                        {p.features.map((f) => (
+                          <li key={f} className="flex items-center gap-2 text-xs leading-5 text-muted-foreground">
+                            <span className="size-1 shrink-0 rounded-full bg-primary" aria-hidden="true" />
+                            {f}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
                     <p className="mt-4 font-mono text-xs font-medium uppercase tracking-wider text-foreground">
                       {p.tech}
                     </p>
-                    <div className="mt-4 flex flex-wrap items-center gap-5">
-                      <a href="#projects" className="group/link inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:text-primary/80">
+                    <div className="mt-4">
+                      <a
+                        href={p.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group/link inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:text-primary/80"
+                      >
                         View Project
                         <ArrowRight className="size-4 transition-transform duration-200 group-hover/link:translate-x-1" />
                       </a>
-                      {p.hasCode && (
-                        <a href="#projects" className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground transition-colors hover:text-primary">
-                          View Code
-                          <ArrowRight className="size-4" />
-                        </a>
-                      )}
                     </div>
                   </div>
                 </div>
