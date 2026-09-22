@@ -21,12 +21,17 @@ export const Route = createFileRoute("/")({
 const navItems = ["Home", "About", "Skills", "Projects", "Experience", "Contact"];
 
 const sections = [
-  { id: "about", number: "01", title: "About", note: "A concise introduction and professional perspective will live here." },
   { id: "skills", number: "02", title: "Skills", note: "Core technologies and engineering capabilities will be organized here." },
   { id: "projects", number: "03", title: "Projects", note: "Selected full-stack work and case studies will be presented here." },
   { id: "experience", number: "04", title: "Experience", note: "Professional roles, contributions, and outcomes will be documented here." },
   { id: "education", number: "05", title: "Education", note: "Academic background and relevant learning will be added here." },
   { id: "services", number: "06", title: "Services", note: "Development services and areas of collaboration will be outlined here." },
+];
+
+const aboutMeta = [
+  { label: "Currently", value: "Information Engineering Technology — University of the Lahore" },
+  { label: "Focus", value: "Full-Stack Development · Web Development · Mobile Development" },
+  { label: "Exploring", value: "UI/UX · Modern Web Technologies · Cybersecurity" },
 ];
 
 function Index() {
