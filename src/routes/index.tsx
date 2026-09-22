@@ -21,10 +21,48 @@ export const Route = createFileRoute("/")({
 const navItems = ["Home", "About", "Skills", "Projects", "Experience", "Contact"];
 
 const sections = [
-  { id: "projects", number: "03", title: "Projects", note: "Selected full-stack work and case studies will be presented here." },
   { id: "experience", number: "04", title: "Experience", note: "Professional roles, contributions, and outcomes will be documented here." },
   { id: "education", number: "05", title: "Education", note: "Academic background and relevant learning will be added here." },
   { id: "services", number: "06", title: "Services", note: "Development services and areas of collaboration will be outlined here." },
+];
+
+const projects = [
+  {
+    number: "01",
+    title: "Admin-Student Management System",
+    type: "Web Application",
+    url: "admin-student.app",
+    desc: "A role-based educational management platform with separate admin and student experiences, authentication, course management, mood tracking, daily tasks, and profile settings.",
+    tech: "Firebase · Authentication APIs · Real-time Database",
+    hasCode: true,
+  },
+  {
+    number: "02",
+    title: "iPhone Website Replica",
+    type: "Frontend",
+    url: "iphone-replica.app",
+    desc: "A responsive recreation of the iPhone website focused on accurate layouts, interactive elements, product categories, and modern frontend interactions.",
+    tech: "React · CSS3 · JavaScript",
+    hasCode: true,
+  },
+  {
+    number: "03",
+    title: "UOL University Website",
+    type: "Website",
+    url: "uol.edu.pk",
+    desc: "A university website concept featuring course registration, login functionality, department information, degree programs, and achievement showcases.",
+    tech: "HTML5 · CSS3 · JavaScript",
+    hasCode: false,
+  },
+  {
+    number: "04",
+    title: "IDAP — Government Application",
+    type: "Mobile Application",
+    url: "idap.gov.app",
+    desc: "A project management application developed during my UET internship, featuring administrative dashboards and threshold-based alerts.",
+    tech: "Flutter · Django · PostgreSQL",
+    hasCode: false,
+  },
 ];
 
 const skillsGroups = [
