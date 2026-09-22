@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowDown, Menu, Moon, Sun, X } from "lucide-react";
+import { ArrowRight, ImagePlus, Menu, Moon, Sun, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -81,15 +81,71 @@ function Index() {
 
       <main>
         <section id="home" className="technical-grid border-b border-border">
-          <div className="mx-auto grid min-h-[calc(100svh-4rem)] max-w-[1200px] grid-cols-1 content-center gap-10 px-5 py-20 sm:px-8 md:min-h-[680px] lg:grid-cols-12 lg:px-10">
-            <div className="lg:col-span-10">
-              <p className="mb-6 font-mono text-xs font-medium uppercase text-primary">Full-stack developer / Portfolio</p>
-              <h1 className="max-w-5xl text-[clamp(3rem,8vw,7.5rem)] font-extrabold leading-[0.95] tracking-normal">Laraib<br />Amjad<span className="text-primary">.</span></h1>
-              <div className="mt-10 grid gap-8 border-t border-border pt-6 sm:grid-cols-2 lg:grid-cols-12">
-                <p className="max-w-xl text-base leading-7 text-muted-foreground sm:col-span-1 lg:col-span-6">Building considered digital products across the front end and back end.</p>
-                <div className="flex items-end sm:justify-end lg:col-span-6">
-                  <a href="#about" className="inline-flex items-center gap-2 font-mono text-xs font-medium uppercase text-foreground transition-colors hover:text-primary">Explore portfolio <ArrowDown className="size-4" /></a>
+          <div className="mx-auto grid max-w-[1200px] grid-cols-1 items-center gap-12 px-5 py-16 sm:px-8 md:py-20 lg:grid-cols-[55fr_45fr] lg:gap-14 lg:px-10 lg:py-24">
+            {/* Left: hero text + CTA */}
+            <div className="hero-fade order-1">
+              <p className="font-mono text-xs font-medium uppercase tracking-[0.18em] text-primary">
+                Full-stack <span className="text-muted-foreground" aria-hidden="true">•</span> Web <span className="text-muted-foreground" aria-hidden="true">•</span> Mobile
+              </p>
+
+              <h1 className="mt-6 text-[clamp(2.75rem,9vw,5.5rem)] font-extrabold leading-[0.92] tracking-tight text-foreground">
+                Laraib Amjad
+              </h1>
+
+              <p className="mt-5 text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
+                Full-Stack & Mobile Developer
+              </p>
+
+              <p className="mt-4 max-w-xl text-base leading-7 text-muted-foreground">
+                Building modern web applications, mobile experiences, and scalable digital solutions.
+              </p>
+
+              {/* CTAs */}
+              <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+                <a
+                  href="#projects"
+                  className="group inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90 sm:w-auto"
+                >
+                  View My Work
+                  <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-1" />
+                </a>
+                <a
+                  href="#contact"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-border bg-background px-6 py-3.5 text-sm font-semibold text-foreground transition-colors hover:border-foreground/40 hover:bg-muted sm:w-auto"
+                >
+                  Get In Touch
+                </a>
+              </div>
+
+              {/* Technology strip */}
+              <ul className="mt-9 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                {["React", "Flutter", "Django", "PostgreSQL"].map((tech, i) => (
+                  <li key={tech} className="flex items-center gap-x-5">
+                    {i > 0 && <span className="size-1 rounded-full bg-border" aria-hidden="true" />}
+                    <span className="transition-colors hover:text-foreground">{tech}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Right: profile image placeholder */}
+            <div className="hero-fade order-2 lg:pl-6" style={{ animationDelay: "0.12s" }}>
+              <div className="group relative aspect-[4/5] w-full overflow-hidden rounded-xl border border-border bg-muted/40 sm:aspect-[5/4] lg:aspect-[4/5]">
+                {/* placeholder content */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-center">
+                  <div className="flex size-14 items-center justify-center rounded-full border border-border bg-background/60 text-muted-foreground transition-colors group-hover:text-foreground">
+                    <ImagePlus className="size-6" />
+                  </div>
+                  <p className="px-6 font-mono text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
+                    Profile photo
+                  </p>
+                  <p className="px-6 text-xs text-muted-foreground/80">
+                    Upload your professional photograph
+                  </p>
                 </div>
+                {/* subtle corner accents */}
+                <span className="pointer-events-none absolute left-3 top-3 size-5 border-l-2 border-t-2 border-foreground/20" aria-hidden="true" />
+                <span className="pointer-events-none absolute bottom-3 right-3 size-5 border-b-2 border-r-2 border-foreground/20" aria-hidden="true" />
               </div>
             </div>
           </div>
