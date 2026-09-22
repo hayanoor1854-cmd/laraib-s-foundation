@@ -134,7 +134,7 @@ function Index() {
                 {/* placeholder content */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-center">
                   <div className="flex size-14 items-center justify-center rounded-full border border-border bg-background/60 text-muted-foreground transition-colors group-hover:text-foreground">
-                    <ImageIcon className="size-6" />
+                    <ImagePlus className="size-6" />
                   </div>
                   <p className="px-6 font-mono text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
                     Profile photo
