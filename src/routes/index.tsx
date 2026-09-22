@@ -99,7 +99,7 @@ const aboutMeta = [
   { label: "Exploring", value: "UI/UX · Modern Web Technologies" },
 ];
 
-function BrowserMockup({ url, type, big = false }: { url: string; type: string; big?: boolean }) {
+function BrowserMockup({ url, type }: { url: string; type: string }) {
   return (
     <div className="group/mock overflow-hidden rounded-lg border border-border bg-background transition-colors duration-300 group-hover:border-primary/50">
       {/* browser chrome */}
@@ -112,7 +112,7 @@ function BrowserMockup({ url, type, big = false }: { url: string; type: string; 
         </div>
       </div>
       {/* abstract preview */}
-      <div className={`${big ? "aspect-[16/9]" : "aspect-[16/10]"} bg-muted/20`}>
+      <div className="aspect-[16/10] bg-muted/20">
         <div className="flex h-full flex-col gap-3 p-4 sm:p-5">
           <div className="flex items-center justify-between">
             <div className="h-2.5 w-1/4 rounded bg-border/80" />
@@ -128,6 +128,96 @@ function BrowserMockup({ url, type, big = false }: { url: string; type: string; 
       </div>
     </div>
   );
+}
+
+function MobileMockup({ type }: { type: string }) {
+  return (
+    <div className="group/mock flex justify-center transition-colors duration-300 group-hover:[&_.phone-frame]:border-primary/50">
+      <div className="phone-frame w-full max-w-[300px] rounded-[2rem] border border-border bg-background p-3 transition-colors duration-300">
+        <div className="relative overflow-hidden rounded-[1.5rem] border border-border bg-muted/20">
+          {/* notch */}
+          <div className="mx-auto mt-2 h-1.5 w-16 rounded-full bg-border" aria-hidden="true" />
+          {/* app wireframe */}
+          <div className="flex aspect-[9/19] flex-col gap-3 p-4">
+            <div className="flex items-center justify-between">
+              <div className="h-2.5 w-2/5 rounded bg-border/80" />
+              <div className="size-5 rounded-full bg-border/70" aria-hidden="true" />
+            </div>
+            <span className="font-mono text-[9px] font-medium uppercase tracking-wider text-muted-foreground/70">{type}</span>
+            <div className="h-2 w-3/4 rounded bg-border/50" />
+            <div className="mt-1 flex-1 space-y-2.5">
+              <div className="h-12 rounded-lg bg-border/40" />
+              <div className="h-12 rounded-lg bg-border/35" />
+              <div className="h-12 rounded-lg bg-border/30" />
+            </div>
+            <div className="flex items-center justify-around rounded-lg border border-border bg-background/60 px-2 py-2">
+              <div className="size-4 rounded bg-border/70" aria-hidden="true" />
+              <div className="size-4 rounded bg-primary/50" aria-hidden="true" />
+              <div className="size-4 rounded bg-border/70" aria-hidden="true" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function DashboardMockup({ url, type }: { url: string; type: string }) {
+  return (
+    <div className="group/mock overflow-hidden rounded-lg border border-border bg-background transition-colors duration-300 group-hover:border-primary/50">
+      {/* browser chrome */}
+      <div className="flex items-center gap-2 border-b border-border bg-muted/40 px-3 py-2">
+        <span className="size-2 rounded-full bg-muted-foreground/40" aria-hidden="true" />
+        <span className="size-2 rounded-full bg-muted-foreground/40" aria-hidden="true" />
+        <span className="size-2 rounded-full bg-muted-foreground/40" aria-hidden="true" />
+        <div className="ml-2 flex-1 truncate rounded border border-border bg-background px-2 py-1 font-mono text-[10px] font-medium text-muted-foreground">
+          {url}
+        </div>
+      </div>
+      {/* dashboard preview */}
+      <div className="aspect-[16/10] bg-muted/20">
+        <div className="flex h-full">
+          {/* sidebar */}
+          <div className="hidden w-1/5 flex-col gap-2.5 border-r border-border bg-background/40 p-3 sm:flex">
+            <div className="h-2.5 w-3/4 rounded bg-border/80" />
+            <div className="mt-2 space-y-2">
+              <div className="h-2 w-full rounded bg-primary/40" />
+              <div className="h-2 w-full rounded bg-border/50" />
+              <div className="h-2 w-full rounded bg-border/50" />
+              <div className="h-2 w-full rounded bg-border/50" />
+            </div>
+          </div>
+          {/* main */}
+          <div className="flex flex-1 flex-col gap-3 p-4 sm:p-5">
+            <div className="flex items-center justify-between">
+              <div className="h-2.5 w-1/3 rounded bg-border/80" />
+              <span className="font-mono text-[10px] font-medium uppercase tracking-wider text-muted-foreground/70">{type}</span>
+            </div>
+            <div className="grid flex-1 grid-cols-2 gap-3 sm:grid-cols-3">
+              <div className="rounded bg-border/40 p-3">
+                <div className="h-2 w-1/2 rounded bg-border/70" />
+                <div className="mt-3 h-3 w-3/4 rounded bg-primary/30" />
+              </div>
+              <div className="rounded bg-border/35 p-3">
+                <div className="h-2 w-1/2 rounded bg-border/70" />
+                <div className="mt-3 h-3 w-2/3 rounded bg-border/50" />
+              </div>
+              <div className="hidden rounded bg-border/30 p-3 sm:block">
+                <div className="h-2 w-1/2 rounded bg-border/70" />
+                <div className="mt-3 h-3 w-3/4 rounded bg-border/45" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ProjectMockup({ mockup, url, type }: { mockup: "browser" | "mobile" | "dashboard"; url: string; type: string }) {
+  if (mockup === "mobile") return <MobileMockup type={type} />;
+  if (mockup === "dashboard") return <DashboardMockup url={url} type={type} />;
+  return <BrowserMockup url={url} type={type} />;
 }
 
 function Index() {
