@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, ImagePlus, Menu, Moon, Sun, X } from "lucide-react";
+import { ArrowRight, Github, ImagePlus, Linkedin, MapPin, Menu, Moon, Sun, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -20,10 +20,59 @@ export const Route = createFileRoute("/")({
 
 const navItems = ["Home", "About", "Skills", "Projects", "Experience", "Contact"];
 
-const sections = [
-  { id: "experience", number: "04", title: "Experience", note: "Professional roles, contributions, and outcomes will be documented here." },
-  { id: "education", number: "05", title: "Education", note: "Academic background and relevant learning will be added here." },
-  { id: "services", number: "06", title: "Services", note: "Development services and areas of collaboration will be outlined here." },
+const services = [
+  {
+    number: "01",
+    title: "Web Development",
+    desc: "Build responsive and modern web applications using React, Next.js, JavaScript, HTML and CSS.",
+    tech: "React · Next.js · JavaScript · HTML5 · CSS3",
+  },
+  {
+    number: "02",
+    title: "Mobile App Development",
+    desc: "Build cross-platform mobile applications using Flutter with practical backend and authentication integration.",
+    tech: "Flutter · Backend Integration · Authentication",
+  },
+  {
+    number: "03",
+    title: "Full-Stack Development",
+    desc: "Develop complete applications across frontend, backend, APIs, databases and authentication using technologies such as React, Django, PostgreSQL, Firebase and REST APIs.",
+    tech: "React · Django · PostgreSQL · Firebase · REST APIs",
+  },
+  {
+    number: "04",
+    title: "UI/UX & Frontend Design",
+    desc: "Create clean, responsive and user-focused interfaces with attention to layout, usability, typography and visual consistency.",
+    tech: "Layout · Typography · Responsive Design",
+  },
+];
+
+const experiences = [
+  {
+    role: "Flutter & Django Developer Intern",
+    company: "PEL (Pak Elektron Limited)",
+    location: "Lahore, Pakistan",
+    dates: "Jul 2026 – Aug 2026",
+    responsibilities: [
+      "Took responsibility for building an expense tracker application with a mobile front end and backend system.",
+      "Organized income, expense, and category records.",
+      "Calculated financial summaries and automated spending alerts.",
+      "Implemented secure login using JWT authentication.",
+    ],
+    tech: "Flutter · Django · JWT Authentication",
+  },
+  {
+    role: "Software Development Intern",
+    company: "KICS, UET Lahore",
+    location: "Lahore, Pakistan",
+    dates: "May 2024 – Jul 2024",
+    responsibilities: [
+      "Developed iRock mobile application using Flutter frontend and Django backend",
+      "Managed PostgreSQL database via pgAdmin and implemented RESTful API integration",
+      "Collaborated with the development team to deliver a complete full-stack mobile solution"
+    ],
+    tech: "Mobile Development · PostgreSQL · Team Collaboration",
+  },
 ];
 
 const projects = [
@@ -34,7 +83,7 @@ const projects = [
     desc: "A role-based educational management mobile application with separate admin and student experiences, authentication, course management, mood tracking, daily tasks, and profile settings.",
     tech: "Flutter · Firebase · Authentication APIs · Real-time Database",
     github: "https://github.com/itx-LaraibAmjad/studentportalapp",
-    mockup: "mobile" as const,
+    image: "/images/admin-student.png",
   },
   {
     number: "02",
@@ -43,7 +92,7 @@ const projects = [
     desc: "A responsive recreation of Apple's iPhone website focused on accurate layouts, product presentation, interactive elements, and modern frontend interactions.",
     tech: "React · CSS3 · JavaScript",
     github: "https://github.com/itx-LaraibAmjad/iphonewebproject",
-    mockup: "browser" as const,
+    image: "/images/iphone.png",
   },
   {
     number: "03",
@@ -62,7 +111,7 @@ const projects = [
     ],
     tech: "React · Django · Django REST Framework · Python · HuggingFace · PostgreSQL/SQLite",
     github: "https://github.com/itx-LaraibAmjad/smart-knowledge-base",
-    mockup: "dashboard" as const,
+    image: "/images/smart-knowledge.png",
   },
   {
     number: "04",
@@ -71,7 +120,7 @@ const projects = [
     desc: "A university website featuring course registration, login functionality, department information, degree programs, and achievement showcases.",
     tech: "HTML5 · CSS3 · JavaScript",
     github: "https://github.com/itx-LaraibAmjad/uolwebsite",
-    mockup: "browser" as const,
+    image: "/images/uol.png",
   },
   {
     number: "05",
@@ -80,7 +129,16 @@ const projects = [
     desc: "A winter fashion website designed around winter clothing and seasonal product presentation. This project was created to practice frontend layout, visual design, typography, spacing, and responsive styling using HTML and CSS.",
     tech: "HTML5 · CSS3",
     github: "https://github.com/itx-LaraibAmjad/winterfashion",
-    mockup: "browser" as const,
+    image: "/images/winter-fashion.png",
+  },
+  {
+    number: "06",
+    title: "Sweet Charm — Bakery Website",
+    type: "Frontend Web Application",
+    desc: "A modern and responsive bakery website built with React, designed to showcase desserts and bakery products through a clean, playful, and user-friendly interface.",
+    tech: "React · JavaScript · HTML · CSS",
+    github: "https://github.com/itx-LaraibAmjad/bakerywebsite",
+    image: "/images/sweet-bakery.png",
   },
 ];
 
@@ -99,130 +157,22 @@ const aboutMeta = [
   { label: "Exploring", value: "UI/UX · Modern Web Technologies" },
 ];
 
-function BrowserMockup({ url, type }: { url: string; type: string }) {
+function ProjectMockup({ image, title }: { image: string; title: string }) {
   return (
-    <div className="group/mock overflow-hidden rounded-lg border border-border bg-background transition-colors duration-300 group-hover:border-primary/50">
-      {/* browser chrome */}
-      <div className="flex items-center gap-2 border-b border-border bg-muted/40 px-3 py-2">
-        <span className="size-2 rounded-full bg-muted-foreground/40" aria-hidden="true" />
-        <span className="size-2 rounded-full bg-muted-foreground/40" aria-hidden="true" />
-        <span className="size-2 rounded-full bg-muted-foreground/40" aria-hidden="true" />
-        <div className="ml-2 flex-1 truncate rounded border border-border bg-background px-2 py-1 font-mono text-[10px] font-medium text-muted-foreground">
-          {url}
-        </div>
-      </div>
-      {/* abstract preview */}
-      <div className="aspect-[16/10] bg-muted/20">
-        <div className="flex h-full flex-col gap-3 p-4 sm:p-5">
-          <div className="flex items-center justify-between">
-            <div className="h-2.5 w-1/4 rounded bg-border/80" />
-            <span className="font-mono text-[10px] font-medium uppercase tracking-wider text-muted-foreground/70">{type}</span>
-          </div>
-          <div className="h-2 w-2/3 rounded bg-border/50" />
-          <div className="mt-1 grid flex-1 grid-cols-3 gap-3">
-            <div className="rounded bg-border/40" />
-            <div className="rounded bg-border/40" />
-            <div className="rounded bg-border/40" />
-          </div>
-        </div>
-      </div>
+    <div className="group/mock overflow-hidden rounded-lg border border-border bg-muted transition-colors duration-300 group-hover:border-primary/50">
+      <img 
+        src={image} 
+        alt={title} 
+        className="w-full aspect-[4/3] sm:aspect-[16/10] object-cover object-top transition-transform duration-500 group-hover/mock:scale-105" 
+      />
     </div>
   );
-}
-
-function MobileMockup({ type }: { type: string }) {
-  return (
-    <div className="group/mock flex justify-center transition-colors duration-300 group-hover:[&_.phone-frame]:border-primary/50">
-      <div className="phone-frame w-full max-w-[300px] rounded-[2rem] border border-border bg-background p-3 transition-colors duration-300">
-        <div className="relative overflow-hidden rounded-[1.5rem] border border-border bg-muted/20">
-          {/* notch */}
-          <div className="mx-auto mt-2 h-1.5 w-16 rounded-full bg-border" aria-hidden="true" />
-          {/* app wireframe */}
-          <div className="flex aspect-[9/19] flex-col gap-3 p-4">
-            <div className="flex items-center justify-between">
-              <div className="h-2.5 w-2/5 rounded bg-border/80" />
-              <div className="size-5 rounded-full bg-border/70" aria-hidden="true" />
-            </div>
-            <span className="font-mono text-[9px] font-medium uppercase tracking-wider text-muted-foreground/70">{type}</span>
-            <div className="h-2 w-3/4 rounded bg-border/50" />
-            <div className="mt-1 flex-1 space-y-2.5">
-              <div className="h-12 rounded-lg bg-border/40" />
-              <div className="h-12 rounded-lg bg-border/35" />
-              <div className="h-12 rounded-lg bg-border/30" />
-            </div>
-            <div className="flex items-center justify-around rounded-lg border border-border bg-background/60 px-2 py-2">
-              <div className="size-4 rounded bg-border/70" aria-hidden="true" />
-              <div className="size-4 rounded bg-primary/50" aria-hidden="true" />
-              <div className="size-4 rounded bg-border/70" aria-hidden="true" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function DashboardMockup({ url, type }: { url: string; type: string }) {
-  return (
-    <div className="group/mock overflow-hidden rounded-lg border border-border bg-background transition-colors duration-300 group-hover:border-primary/50">
-      {/* browser chrome */}
-      <div className="flex items-center gap-2 border-b border-border bg-muted/40 px-3 py-2">
-        <span className="size-2 rounded-full bg-muted-foreground/40" aria-hidden="true" />
-        <span className="size-2 rounded-full bg-muted-foreground/40" aria-hidden="true" />
-        <span className="size-2 rounded-full bg-muted-foreground/40" aria-hidden="true" />
-        <div className="ml-2 flex-1 truncate rounded border border-border bg-background px-2 py-1 font-mono text-[10px] font-medium text-muted-foreground">
-          {url}
-        </div>
-      </div>
-      {/* dashboard preview */}
-      <div className="aspect-[16/10] bg-muted/20">
-        <div className="flex h-full">
-          {/* sidebar */}
-          <div className="hidden w-1/5 flex-col gap-2.5 border-r border-border bg-background/40 p-3 sm:flex">
-            <div className="h-2.5 w-3/4 rounded bg-border/80" />
-            <div className="mt-2 space-y-2">
-              <div className="h-2 w-full rounded bg-primary/40" />
-              <div className="h-2 w-full rounded bg-border/50" />
-              <div className="h-2 w-full rounded bg-border/50" />
-              <div className="h-2 w-full rounded bg-border/50" />
-            </div>
-          </div>
-          {/* main */}
-          <div className="flex flex-1 flex-col gap-3 p-4 sm:p-5">
-            <div className="flex items-center justify-between">
-              <div className="h-2.5 w-1/3 rounded bg-border/80" />
-              <span className="font-mono text-[10px] font-medium uppercase tracking-wider text-muted-foreground/70">{type}</span>
-            </div>
-            <div className="grid flex-1 grid-cols-2 gap-3 sm:grid-cols-3">
-              <div className="rounded bg-border/40 p-3">
-                <div className="h-2 w-1/2 rounded bg-border/70" />
-                <div className="mt-3 h-3 w-3/4 rounded bg-primary/30" />
-              </div>
-              <div className="rounded bg-border/35 p-3">
-                <div className="h-2 w-1/2 rounded bg-border/70" />
-                <div className="mt-3 h-3 w-2/3 rounded bg-border/50" />
-              </div>
-              <div className="hidden rounded bg-border/30 p-3 sm:block">
-                <div className="h-2 w-1/2 rounded bg-border/70" />
-                <div className="mt-3 h-3 w-3/4 rounded bg-border/45" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function ProjectMockup({ mockup, url, type }: { mockup: "browser" | "mobile" | "dashboard"; url: string; type: string }) {
-  if (mockup === "mobile") return <MobileMockup type={type} />;
-  if (mockup === "dashboard") return <DashboardMockup url={url} type={type} />;
-  return <BrowserMockup url={url} type={type} />;
 }
 
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [dark, setDark] = useState(false);
+  const [showMoreProjects, setShowMoreProjects] = useState(false);
 
   useEffect(() => {
     const saved = window.localStorage.getItem("laraib-theme");
@@ -322,18 +272,11 @@ function Index() {
             {/* Right: profile image placeholder */}
             <div className="hero-fade order-2 lg:pl-6" style={{ animationDelay: "0.12s" }}>
               <div className="group relative aspect-[4/5] w-full overflow-hidden rounded-xl border border-border bg-muted/40 sm:aspect-[5/4] lg:aspect-[4/5]">
-                {/* placeholder content */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-center">
-                  <div className="flex size-14 items-center justify-center rounded-full border border-border bg-background/60 text-muted-foreground transition-colors group-hover:text-foreground">
-                    <ImagePlus className="size-6" />
-                  </div>
-                  <p className="px-6 font-mono text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
-                    Profile photo
-                  </p>
-                  <p className="px-6 text-xs text-muted-foreground/80">
-                    Upload your professional photograph
-                  </p>
-                </div>
+                <img 
+                  src="/images/photo.png" 
+                  alt="Laraib Amjad" 
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
                 {/* subtle corner accents */}
                 <span className="pointer-events-none absolute left-3 top-3 size-5 border-l-2 border-t-2 border-foreground/20" aria-hidden="true" />
                 <span className="pointer-events-none absolute bottom-3 right-3 size-5 border-b-2 border-r-2 border-foreground/20" aria-hidden="true" />
@@ -388,11 +331,11 @@ function Index() {
         <section id="skills" className="technical-grid border-b border-border">
           <div className="mx-auto max-w-[1200px] px-5 py-16 sm:px-8 md:py-20 lg:px-10 lg:py-24">
             {/* Header */}
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-12">
-              <div className="md:col-span-3">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-12 md:gap-8">
+              <div className="md:col-span-1 md:pt-1">
                 <p className="font-mono text-xs font-medium text-primary">/02</p>
               </div>
-              <div className="md:col-span-9">
+              <div className="md:col-span-11">
                 <p className="font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
                   Skills
                 </p>
@@ -446,11 +389,11 @@ function Index() {
         <section id="projects" className="border-b border-border">
           <div className="mx-auto max-w-[1200px] px-5 py-16 sm:px-8 md:py-20 lg:px-10 lg:py-24">
             {/* Header */}
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-12">
-              <div className="md:col-span-3">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-12 md:gap-8">
+              <div className="md:col-span-1 md:pt-1">
                 <p className="font-mono text-xs font-medium text-primary">/03</p>
               </div>
-              <div className="md:col-span-9">
+              <div className="md:col-span-11">
                 <p className="font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
                   Selected Projects
                 </p>
@@ -463,119 +406,290 @@ function Index() {
               </div>
             </div>
 
-            {/* Featured project */}
-            {(() => {
-              const p = projects[0]!;
-              return (
-                <div className="group mt-12 grid grid-cols-1 gap-8 border-t border-border pt-10 md:grid-cols-12 md:gap-10">
-                  <div className="md:col-span-5 md:pt-2">
-                    <div className="flex items-baseline gap-3">
-                      <span className="font-mono text-xs font-medium text-primary">{p.number}</span>
-                      <span className="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground">{p.type}</span>
-                    </div>
-                    <h3 className="mt-3 text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-                      {p.title}
-                    </h3>
-                    <p className="mt-4 text-base leading-7 text-muted-foreground">
-                      {p.desc}
-                    </p>
-                    <p className="mt-5 font-mono text-xs font-medium uppercase tracking-wider text-foreground">
-                      {p.tech}
-                    </p>
-                    <div className="mt-6">
-                      <a
-                        href={p.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group/link inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:text-primary/80"
-                      >
-                        View Project
-                        <ArrowRight className="size-4 transition-transform duration-200 group-hover/link:translate-x-1" />
-                      </a>
-                    </div>
+            {/* Featured projects */}
+            {projects.slice(0, 2).map((p, index) => (
+              <div key={p.number} className={`group ${index === 0 ? 'mt-12' : 'mt-16'} grid grid-cols-1 gap-8 border-t border-border pt-10 md:grid-cols-12 md:gap-10`}>
+                <div className="md:col-span-5 md:pt-2">
+                  <div className="flex items-baseline gap-3">
+                    <span className="font-mono text-xs font-medium text-primary">{p.number}</span>
+                    <span className="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground">{p.type}</span>
                   </div>
-                  <div className="md:col-span-7">
-                    <ProjectMockup mockup={p.mockup} url={p.github} type={p.type} />
+                  <h3 className="mt-3 text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+                    {p.title}
+                  </h3>
+                  <p className="mt-4 text-base leading-7 text-muted-foreground">
+                    {p.desc}
+                  </p>
+                  <p className="mt-5 font-mono text-xs font-medium uppercase tracking-wider text-foreground">
+                    {p.tech}
+                  </p>
+                  <div className="mt-6">
+                    <a
+                      href={p.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group/link inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:text-primary/80"
+                    >
+                      View Project
+                      <ArrowRight className="size-4 transition-transform duration-200 group-hover/link:translate-x-1" />
+                    </a>
                   </div>
                 </div>
-              );
-            })()}
+                <div className="md:col-span-7">
+                  <ProjectMockup image={p.image} title={p.title} />
+                </div>
+              </div>
+            ))}
 
-            {/* Other projects */}
-            <div className="mt-12 grid grid-cols-1 gap-x-12 gap-y-10 md:grid-cols-2">
-              {projects.slice(1).map((p) => (
-                <div key={p.number} className="group border-t border-border pt-6">
-                  <ProjectMockup mockup={p.mockup} url={p.github} type={p.type} />
-                  <div className="mt-5">
-                    <div className="flex items-baseline gap-3">
-                      <span className="font-mono text-xs font-medium text-primary">{p.number}</span>
-                      <span className="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground">{p.type}</span>
+            {/* Other projects - conditional rendering */}
+            {showMoreProjects && (
+              <div className="mt-12 grid grid-cols-1 gap-x-12 gap-y-10 md:grid-cols-2">
+                {projects.slice(2).map((p) => (
+                  <div key={p.number} className="group border-t border-border pt-6 animate-in fade-in slide-in-from-top-4 duration-500">
+                    <ProjectMockup image={p.image} title={p.title} />
+                    <div className="mt-5">
+                      <div className="flex items-baseline gap-3">
+                        <span className="font-mono text-xs font-medium text-primary">{p.number}</span>
+                        <span className="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground">{p.type}</span>
+                      </div>
+                      <h3 className="mt-2 text-xl font-bold tracking-tight text-foreground">
+                        {p.title}
+                      </h3>
+                      <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                        {p.desc}
+                      </p>
+                      {"features" in p && p.features ? (
+                        <ul className="mt-4 grid grid-cols-1 gap-1.5 sm:grid-cols-2">
+                          {p.features.map((f) => (
+                            <li key={f} className="flex items-center gap-2 text-xs leading-5 text-muted-foreground">
+                              <span className="size-1 shrink-0 rounded-full bg-primary" aria-hidden="true" />
+                              {f}
+                            </li>
+                          ))}
+                        </ul>
+                      ) : null}
+                      <p className="mt-4 font-mono text-xs font-medium uppercase tracking-wider text-foreground">
+                        {p.tech}
+                      </p>
+                      <div className="mt-4">
+                        <a
+                          href={p.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group/link inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:text-primary/80"
+                        >
+                          View Project
+                          <ArrowRight className="size-4 transition-transform duration-200 group-hover/link:translate-x-1" />
+                        </a>
+                      </div>
                     </div>
-                    <h3 className="mt-2 text-xl font-bold tracking-tight text-foreground">
-                      {p.title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                      {p.desc}
-                    </p>
-                    {"features" in p && p.features ? (
-                      <ul className="mt-4 grid grid-cols-1 gap-1.5 sm:grid-cols-2">
-                        {p.features.map((f) => (
-                          <li key={f} className="flex items-center gap-2 text-xs leading-5 text-muted-foreground">
-                            <span className="size-1 shrink-0 rounded-full bg-primary" aria-hidden="true" />
-                            {f}
-                          </li>
-                        ))}
-                      </ul>
-                    ) : null}
-                    <p className="mt-4 font-mono text-xs font-medium uppercase tracking-wider text-foreground">
-                      {p.tech}
-                    </p>
-                    <div className="mt-4">
-                      <a
-                        href={p.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group/link inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:text-primary/80"
-                      >
-                        View Project
-                        <ArrowRight className="size-4 transition-transform duration-200 group-hover/link:translate-x-1" />
-                      </a>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* Show More/Less Button */}
+            <div className="mt-12 flex justify-center border-t border-border pt-10">
+              <Button 
+                variant="outline" 
+                onClick={() => setShowMoreProjects(!showMoreProjects)}
+                className="font-mono text-xs uppercase tracking-wider h-11 px-8 rounded-full border-border hover:bg-muted"
+              >
+                {showMoreProjects ? "Show Less ↑" : "More Projects ↓"}
+              </Button>
+            </div>
+           
+          </div>
+        </section>
+
+        {/* Experience */}
+        <section id="experience" className="border-b border-border">
+          <div className="mx-auto max-w-[1200px] px-5 py-16 sm:px-8 md:py-20 lg:px-10 lg:py-24">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-12 md:gap-8">
+              <div className="md:col-span-1 md:pt-1">
+                <p className="font-mono text-xs font-medium text-primary">/04</p>
+              </div>
+              <div className="md:col-span-11">
+                <p className="font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+                  Experience
+                </p>
+                <h2 className="mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+                  Where I’ve Worked
+                </h2>
+                <p className="mt-4 max-w-xl text-base leading-7 text-muted-foreground">
+                  Internships and hands-on roles where I contributed to real products and development teams.
+                </p>
+              </div>
+            </div>
+
+            {/* Experience Blocks */}
+            <div className="mt-12 flex flex-col gap-8 border-t border-border pt-10 md:mt-16">
+              {experiences.map((exp) => (
+                <div
+                  key={exp.role}
+                  className="group relative rounded-lg border border-border border-l-[3px] border-l-primary bg-background p-6 transition-colors hover:border-primary/50 sm:p-8"
+                >
+                  <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                    <div>
+                      <h3 className="text-xl font-bold tracking-tight text-foreground sm:text-2xl">
+                        {exp.role}
+                      </h3>
+                      <div className="mt-1.5 flex flex-wrap items-center gap-x-2">
+                        <p className="text-sm font-medium text-primary sm:text-base">
+                          {exp.company}
+                        </p>
+                      </div>
                     </div>
+                    
+                    <div className="inline-flex shrink-0 items-center justify-center rounded border border-border px-3 py-1.5">
+                      <span className="font-mono text-[11px] font-medium tracking-wider text-muted-foreground sm:text-xs">
+                        {exp.dates}
+                      </span>
+                    </div>
+                  </div>
+
+                  <ul className="mt-8 space-y-4">
+                    {exp.responsibilities.map((item) => (
+                      <li key={item} className="flex items-start gap-3 text-sm leading-6 text-muted-foreground sm:leading-7">
+                        <span className="text-muted-foreground/60">—</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Services */}
+        <section id="services" className="technical-grid border-b border-border">
+          <div className="mx-auto max-w-[1200px] px-5 py-16 sm:px-8 md:py-20 lg:px-10 lg:py-24">
+            {/* Header */}
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-12 md:gap-8">
+              <div className="md:col-span-1 md:pt-1">
+                <p className="font-mono text-xs font-medium text-primary">/05</p>
+              </div>
+              <div className="md:col-span-11">
+                <p className="font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+                  Services
+                </p>
+                <h2 className="mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+                  What I Can Help With
+                </h2>
+                <p className="mt-4 max-w-xl text-base leading-7 text-muted-foreground">
+                  Practical development support across web, mobile, and full-stack projects.
+                </p>
+              </div>
+            </div>
+
+            {/* Service items */}
+            <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:gap-8 border-t border-border pt-10">
+              {services.map((service) => (
+                <div
+                  key={service.title}
+                  className="group flex flex-col rounded-xl border border-border bg-background p-6 transition-colors hover:border-primary/50 sm:p-8"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono text-[11px] font-medium text-primary">{service.number}</span>
+                  </div>
+                  <h3 className="mt-5 text-xl font-bold tracking-tight text-foreground sm:text-2xl">
+                    {service.title}
+                  </h3>
+                  <p className="mt-4 flex-1 text-sm leading-6 text-muted-foreground sm:leading-7">
+                    {service.desc}
+                  </p>
+                  <div className="mt-8 border-t border-border pt-5 sm:pt-6">
+                    <p className="font-mono text-[10px] font-medium uppercase tracking-wider text-muted-foreground transition-colors group-hover:text-foreground">
+                      {service.tech}
+                    </p>
                   </div>
                 </div>
               ))}
             </div>
-
-            {/* Footer note */}
-            <p className="mt-12 border-t border-border pt-6 font-mono text-xs font-medium uppercase tracking-wider text-muted-foreground">
-              More projects and experiments coming soon.
-            </p>
           </div>
         </section>
 
-        {sections.map((section, index) => (
-          <section key={section.id} id={section.id} className={`${index === 2 ? "technical-grid " : ""}border-b border-border`}>
-            <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-8 px-5 py-16 sm:px-8 md:grid-cols-12 md:py-20 lg:px-10">
-              <div className="md:col-span-3">
-                <p className="font-mono text-xs font-medium text-primary">/{section.number}</p>
+        <section id="contact" className="border-b border-border bg-muted/30">
+          <div className="mx-auto max-w-[1200px] px-5 py-16 sm:px-8 md:py-20 lg:px-10 lg:py-24">
+            <div className="mb-10 grid grid-cols-1 gap-4 md:grid-cols-12 md:mb-12 md:gap-8">
+              <div className="md:col-span-1 md:pt-1">
+                <p className="font-mono text-xs font-medium text-primary">/06</p>
               </div>
-              <div className="md:col-span-9">
-                <h2 className="text-3xl font-bold tracking-normal sm:text-4xl">{section.title}</h2>
-                <div className="mt-10 min-h-28 border-t border-border pt-5 md:min-h-36">
-                  <p className="max-w-lg text-sm leading-6 text-muted-foreground">{section.note}</p>
-                </div>
+              <div className="md:col-span-11">
+                <p className="font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+                  Contact
+                </p>
               </div>
             </div>
-          </section>
-        ))}
 
-        <section id="contact" className="border-b border-border bg-card">
-          <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-8 px-5 py-16 sm:px-8 md:grid-cols-12 md:py-20 lg:px-10">
-            <div className="md:col-span-3"><p className="font-mono text-xs font-medium text-primary">/07</p></div>
-            <div className="md:col-span-9">
-              <p className="font-mono text-xs font-medium uppercase text-muted-foreground">Contact</p>
-              <h2 className="mt-4 max-w-3xl text-4xl font-bold leading-tight tracking-normal sm:text-5xl">Let’s build something considered.</h2>
-              <p className="mt-8 max-w-lg text-sm leading-6 text-muted-foreground">Contact details and preferred channels will be added here.</p>
+            <div className="relative overflow-hidden rounded-2xl border border-border bg-background p-8 sm:p-12 lg:p-16">
+              {/* subtle technical grid inside */}
+              <div className="technical-grid pointer-events-none absolute inset-0 opacity-40" aria-hidden="true" />
+              
+              <div className="relative z-10 grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-8">
+                {/* Left Area */}
+                <div className="flex flex-col justify-center lg:col-span-7">
+                  <h2 className="max-w-xl text-4xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-[3.5rem]">
+                    Let's build something useful.
+                  </h2>
+                  <p className="mt-6 max-w-lg text-base leading-7 text-muted-foreground sm:text-lg">
+                    Open to internships, freelance opportunities, and collaboration.
+                  </p>
+                  <div className="mt-10 lg:mt-12">
+                    <a
+                      href="mailto:laraibamjad.it@gmail.com"
+                      className="group inline-flex items-center gap-4 border-b-2 border-primary pb-2 text-xl font-bold tracking-tight text-foreground transition-colors hover:text-primary sm:text-2xl lg:text-3xl"
+                    >
+                      laraibamjad.it@gmail.com
+                      <ArrowRight className="size-5 shrink-0 transition-transform duration-300 group-hover:translate-x-2 sm:size-6" />
+                    </a>
+                  </div>
+                </div>
+                
+                {/* Right Area */}
+                <div className="flex flex-col justify-center gap-8 border-t border-border pt-8 lg:col-span-4 lg:col-start-9 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0">
+                  <div>
+                    <p className="mb-4 font-mono text-[10px] font-medium uppercase tracking-[0.15em] text-muted-foreground">
+                      Social Profiles
+                    </p>
+                    <ul className="flex flex-col gap-4">
+                      <li>
+                        <a
+                          href="https://github.com/itx-LaraibAmjad"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group inline-flex items-center gap-3 text-sm font-semibold text-foreground transition-colors hover:text-primary"
+                        >
+                          <Github className="size-4 text-muted-foreground transition-colors group-hover:text-primary" aria-hidden="true" />
+                          GitHub
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="https://linkedin.com/in/laraibamjad"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group inline-flex items-center gap-3 text-sm font-semibold text-foreground transition-colors hover:text-primary"
+                        >
+                          <Linkedin className="size-4 text-muted-foreground transition-colors group-hover:text-primary" aria-hidden="true" />
+                          LinkedIn
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                  
+                  <div className="border-t border-border/50 pt-8">
+                    <p className="mb-4 font-mono text-[10px] font-medium uppercase tracking-[0.15em] text-muted-foreground">
+                      Location
+                    </p>
+                    <div className="flex items-center gap-3 text-sm font-semibold text-foreground">
+                      <MapPin className="size-4 text-muted-foreground" aria-hidden="true" />
+                      Lahore, Pakistan
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
